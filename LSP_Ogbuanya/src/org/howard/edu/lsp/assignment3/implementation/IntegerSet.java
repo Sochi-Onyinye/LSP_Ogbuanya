@@ -42,7 +42,7 @@ public class IntegerSet {
 	 * Returns true if the set is empty, false otherwise
 	 * @return true if the set is empty, false otherwise
 	 */
-	boolean isEmpty() {
+	public boolean isEmpty() {
 		return set.size() == 0;
 	}; 
 	
@@ -50,7 +50,7 @@ public class IntegerSet {
 	 * Returns true if the 2 sets are equal, returns false if  otherwise;
 	 * Two sets are equal if they contain all of the same elements in ANY order.
 	 * @param b -> the IntegerSet to be compared
-	 * @return a bool that says if they are equal or not
+	 * @return a boolean that says if they are equal or not
 	 */
 	public boolean equals(IntegerSet b) {
 		ArrayList<Integer> bSet = new ArrayList(b.getSet());
