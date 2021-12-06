@@ -29,16 +29,21 @@ public class Polynominal {
 	 */
 	public void insert(TheTermClass newTerm)
 	{
-		if (myList.size() == 0 )
+		if (myList.size() == 0 ) {
 			myList.add(newTerm);
-		if (myList.size() > 0 )
+			return;
+		}
+		else if (myList.size() > 0 ) {
 			for(int i = 0; i < myList.size(); i++)
 			{
-				if (newTerm.getExpo() < myList.get(i).getExpo())
-					myList.add(newTerm);
+				if (newTerm.getExpo() < myList.get(i).getExpo()) {
+					myList.add(i, newTerm);
+					return;
+				}
 			}
-			
-			
+		}
+		
+		myList.add(newTerm);
 	}
 	
 	/**
@@ -50,7 +55,13 @@ public class Polynominal {
 		String poly = "";
 		for ( int i = 0; i < myList.size(); i++ )
 		{
-			poly += myList.get(i).toString();
+			if ( i == myList.size() - 1)
+				poly += myList.get(i).toString();
+			else {
+			System.out.println(myList.get(i).toString());
+			poly += myList.get(i).toString() + " + ";
+			}
+			
 		}
 		return poly;
 	}
@@ -116,15 +127,10 @@ public class Polynominal {
 	public static void main(String[] args)
 	{
 		Polynominal poly = new Polynominal();
-		poly.insert(new TheTermClass(4,8));
-		poly.insert(new TheTermClass(2,4));
-		poly.insert(new TheTermClass(1,3));
-		System.out.println(poly.toString());
-		
-		poly.delete(1,3);
-		System.out.println(poly.product());
-		System.out.println(poly.toString());
-		poly.reverse();
+		poly.insert(new TheTermClass(-8,0));
+		poly.insert(new TheTermClass(-4,4));
+		poly.insert(new TheTermClass(5,3));
+		System.out.println(poly.fullPoly());
 	}
 
 }

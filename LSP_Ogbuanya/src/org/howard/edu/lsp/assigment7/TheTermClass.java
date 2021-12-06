@@ -83,7 +83,7 @@ public class TheTermClass
 	 * above.
 	 */
 	public static void main(String[] args) {
-		TheTermClass term = new TheTermClass(1,4);
+		TheTermClass term = new TheTermClass(8,0);
 		System.out.println(term.toString());
 	}
 	

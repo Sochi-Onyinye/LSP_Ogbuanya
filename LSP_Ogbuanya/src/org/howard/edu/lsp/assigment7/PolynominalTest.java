@@ -43,44 +43,52 @@ class PolynominalTest {
 	@Test
 	
 	void testClass() {
-
-		int length = 0;
-		int termCount = 0;
+		
 		String[] arrayPoly;
 		String inputPoly;
-		String coeff = "", expo = "";
+		int coeff;
+		int expo;
 
+		
     	inputPoly = fileReader.nextLine();
 		arrayPoly = inputPoly.split(";");
-		length = arrayPoly.length / 2;
-		termCount = 0;
+		int termLength = arrayPoly.length / 2;
+		int termCount = 0;
+		
 		System.out.println(inputPoly);
-		for(int i = 0; i < length; i++) 
+		
+		for(int i = 0; i < termLength; i++) 
 		{
-			coeff = arrayPoly[termCount];
+			
+			coeff = Integer.parseInt(arrayPoly[termCount]);
 			termCount += 1;
-			expo = arrayPoly[termCount];
+			expo = Integer.parseInt(arrayPoly[termCount]);
 			termCount += 1;
-			poly.insert(new TheTermClass(Integer.parseInt(coeff), Integer.parseInt(expo)));
-			System.out.println("coefficient: " + coeff + " ex: " + expo);
+//			 System.out.println("coefficient: " + coeff + " ex: " + expo);
+			poly.insert(new TheTermClass(coeff, expo));
+			
+			System.out.println(poly.fullPoly());
 		}
-
-		assertEquals("8 - 4x + 5x^2 ", poly.fullPoly());
+		//Test
+		assertEquals("8 + 4x + 5x^3 ", poly.fullPoly());
+		
 		inputPoly = fileReader.nextLine();
 		arrayPoly = inputPoly.split(";");
-		length = arrayPoly.length / 2;
+		termLength = arrayPoly.length / 2;
 		termCount = 0;
-		for(int i = 0; i < length; i++)
+		
+		for(int i = 0; i < termLength; i++)
 		{
-			coeff = arrayPoly[termCount];
+			coeff = Integer.parseInt(arrayPoly[termCount]);
 			termCount += 1;
-			expo = arrayPoly[termCount];
+			expo = Integer.parseInt(arrayPoly[termCount]);
 			termCount += 1;
-			poly.delete(Integer.parseInt(coeff), Integer.parseInt(expo));
+			poly.delete(coeff, expo);
 		}
-
-		assertEquals("8 -4x ", poly.fullPoly());
-		assertEquals("100x^2", poly.product());
+		
+		//Test
+		assertEquals("8 + 4x", poly.fullPoly());
+		assertEquals("32x", poly.product());
 		
 	}
 	
